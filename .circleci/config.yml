@@ -11,9 +11,11 @@ jobs:
     steps:
       - checkout
       - run: |
-          sudo add-apt-repository ppa:deadsnakes/ppa
-          sudo apt install python3.10
-          python3 -V
+          sudo apt update && sudo apt upgrade -y
+          sudo add-apt-repository ppa:deadsnakes/ppa -y
+          sudo apt update
+          sudo apt install python3.10 -y
+          python3 --version
           pyenv global 3.10.0
       - run: 
           name: Environment Information
