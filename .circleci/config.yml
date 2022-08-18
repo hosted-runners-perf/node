@@ -8,7 +8,7 @@ jobs:
   test-linux:
     machine:
       image: ubuntu-2204:2022.07.1
-      resource_class: large
+      resource_class: medium
     steps:
       - checkout
       - run: |
