@@ -47,15 +47,15 @@ jobs:
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
   test-linux-docker-2-core:
     docker:
-      - image: cimg/base:current
+      - image: cimg/python:3.10.5
     resource_class: medium
     steps:
       - checkout
-      - run: |
-          sudo add-apt-repository ppa:deadsnakes/ppa -y
-          sudo apt install python3.10 -y
-          python3 --version
-          pyenv global 3.10.5
+#       - run: |
+#           sudo add-apt-repository ppa:deadsnakes/ppa -y
+#           sudo apt install python3.10 -y
+#           python3 --version
+#           pyenv global 3.10.5
       - run: 
           name: Environment Information
           command: npx envinfo
@@ -67,15 +67,15 @@ jobs:
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
   test-linux-docker-4-core:
     docker:
-      - image: cimg/base:current
+      - image: cimg/python:3.10.5
     resource_class: large
     steps:
       - checkout
-      - run: |
-          sudo add-apt-repository ppa:deadsnakes/ppa -y
-          sudo apt install python3.10 -y
-          python3 --version
-          pyenv global 3.10.5
+#       - run: |
+#           sudo add-apt-repository ppa:deadsnakes/ppa -y
+#           sudo apt install python3.10 -y
+#           python3 --version
+#           pyenv global 3.10.5
       - run: 
           name: Environment Information
           command: npx envinfo
