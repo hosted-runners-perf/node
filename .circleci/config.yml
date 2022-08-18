@@ -10,9 +10,11 @@ jobs:
       image: ubuntu-2204:2022.07.1
     steps:
       - checkout
-      - run:
-          name: "Set Python Version"
-          command: pyenv global 3.10.0
+      - run: |
+          sudo add-apt-repository ppa:deadsnakes/ppa
+          sudo apt install python3.10
+          python3 -V
+          pyenv global 3.10.0
       - run: 
           name: Environment Information
           command: npx envinfo
