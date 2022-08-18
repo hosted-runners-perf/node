@@ -47,8 +47,8 @@ jobs:
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
   test-linux-docker-2-core:
     docker:
-      image: cimg/base:current
-      resource_class: medium
+      - image: cimg/base:current
+    resource_class: medium
     steps:
       - checkout
       - run: |
@@ -67,8 +67,8 @@ jobs:
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
   test-linux-docker-4-core:
     docker:
-      image: cimg/base:current
-      resource_class: large
+      - image: cimg/base:current
+    resource_class: large
     steps:
       - checkout
       - run: |
@@ -85,11 +85,10 @@ jobs:
       - run:
           name: Test
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
-
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  node-test-linux:
     jobs:
       - test-linux-vm-2-core
       - test-linux-vm-4-core
