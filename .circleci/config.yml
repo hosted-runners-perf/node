@@ -47,7 +47,7 @@ jobs:
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
   test-linux-docker-2-core:
     docker:
-      - image: cimg/python:3.10.5
+      - image: cimg/python:3.10.5-node
     resource_class: medium
     steps:
       - checkout
@@ -67,7 +67,7 @@ jobs:
           command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
   test-linux-docker-4-core:
     docker:
-      - image: cimg/python:3.10.5
+      - image: cimg/python:3.10.5-node
     resource_class: large
     steps:
       - checkout
