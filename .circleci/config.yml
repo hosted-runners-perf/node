@@ -15,7 +15,7 @@ jobs:
           sudo add-apt-repository ppa:deadsnakes/ppa -y
           sudo apt install python3.10 -y
           python3 --version
-          pyenv global 3.10.0
+          pyenv global 3.10.5
       - run: 
           name: Environment Information
           command: npx envinfo
