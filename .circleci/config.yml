@@ -17,6 +17,21 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+          
+  test-linux:
+    machine:
+      image: ubuntu-2204:2022.07.1
+    steps:
+      - checkout
+      - run: 
+          name: Environment Information
+          command: npx envinfo
+      - run: 
+          name: Build
+          command: make build-ci -j2 V=1 CONFIG_FLAGS="--error-on-warn"
+      - run:
+          name: Test
+          command: make run-ci -j2 V=1 TEST_CI_ARGS="-p actions --measure-flakiness 9"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -24,3 +39,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - test-linux
